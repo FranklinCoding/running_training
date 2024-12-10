@@ -15,15 +15,18 @@ from config import (
 )
 
 def load_last_run_date():
-    """Load the last run date from a file, or initialize it if not present."""
     if not os.path.exists(LAST_RUN_FILE):
-        # If file doesn't exist, assume last run date is INITIAL_DATE
         with open(LAST_RUN_FILE, "w") as f:
             f.write(INITIAL_DATE.isoformat())
         return INITIAL_DATE
     else:
         with open(LAST_RUN_FILE, "r") as f:
             date_str = f.read().strip()
+            if not date_str:
+                # If empty, write INITIAL_DATE
+                with open(LAST_RUN_FILE, "w") as fw:
+                    fw.write(INITIAL_DATE.isoformat())
+                return INITIAL_DATE
             return datetime.date.fromisoformat(date_str)
 
 
