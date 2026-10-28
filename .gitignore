@@ -1,0 +1,17 @@
+# Xcode (the project is generated from project.yml)
+*.xcodeproj/
+*.xcworkspace/
+!ReachCore/.swiftpm/xcode/package.xcworkspace/
+xcuserdata/
+DerivedData/
+build/
+
+# SwiftPM
+ReachCore/.build/
+.swiftpm/
+
+# Python
+__pycache__/
+*.pyc
+
+.DS_Store
